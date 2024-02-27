@@ -1,0 +1,71 @@
+.outerDiv{
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom:1px solid rgb(126, 126, 126) ;
+    /* box-shadow: rgb(153, 153, 153) 0px 0px 10px 1px; */
+}
+.logo_div h2{
+    font-size: 2.4rem;
+    margin: 5px 10px;
+    color: white;
+}
+.logo_div .link{
+    text-decoration: none;
+}
+.icons_div{
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+}
+.input_div{
+    display: flex;
+    align-items: center;
+    margin: 10px 10px;
+    border: 1px solid #242424;
+    background: white;
+    gap: 9px;
+    border-radius: 5px;
+}
+.input_div input{
+    border-radius: 5px;
+    padding: 9px 12px;
+    outline: none;
+    border: none;
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+    color: #242424;
+}
+.input_div input ::placeholder{
+    color: #242424;
+}
+.input_div .search{
+    color: #242424;
+    margin: 2px;
+}
+.inner_icons_div{
+    /* border: 1px solid white; */
+    display: flex;
+    align-items: center;
+    margin: 10px 10px;
+    width: 200px;
+    justify-content: space-around;
+}
+.inner_icons_div .store,.basket,.person,.wishlist{
+    font-size: 2.3rem;
+    margin: 5px 5px;
+    cursor: pointer;
+    color: rgb(221, 210, 210);
+}
+
+.cart_item{
+    position: absolute;
+    color: white;
+    right: 68px;
+    top:20px;
+    font-size: 1.2rem;
+    color: red;
+}
+
