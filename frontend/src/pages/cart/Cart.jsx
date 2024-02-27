@@ -62,7 +62,7 @@ export default function Cart() {
         <hr />
         <h2>Order Total : {totalPrice.toLocaleString()} </h2>
         {
-          cart.length >=1 ?(
+          totalPrice >=1 ?(
             <button onClick={makePayment} >Check Out.</button>
           ):(
             <button disabled >Check Out</button>
