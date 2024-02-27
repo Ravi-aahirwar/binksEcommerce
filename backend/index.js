@@ -1,16 +1,12 @@
 
 const express = require("express")
 const app = express();
-const cors = require("cors")
 
 require("dotenv").config();
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 app.use(express.json());
-// app.use(cors({
-//     origin:" http://localhost:5173/"
-// }))
 
 app.listen(7000, () => console.log("https://binks-ecommerce-backend.vercel.app/"));
 
