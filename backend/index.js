@@ -10,26 +10,23 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET);
 app.use(express.json());
 
 
-app.listen(7000, () => console.log("7000"));
+app.listen(7000, () => console.log("http://localhost:7000"));
 
-app.use(cors(
-    {
-        origin:["https://binks-ecommerce-xwoa-fuw85l7tm-ravi-as-projects.vercel.app/","localhost:5173"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
+const isDev = app.settings.env === "development"
 
-))
+const URL = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app/"
+
+    app.use(cors({ origin: URL }))
 
 app.post("/api/create-checkout-session", async (req, res) => {
-    const  {products}  = req.body
+    const { products } = req.body
 
     const lineItems = products.map((product) => ({
         price_data: {
             currency: "inr",
             product_data: {
                 name: product.title,
-                images:[product.image],
+                images: [product.image],
             },
             unit_amount: product.price * 100,
         },
@@ -40,11 +37,11 @@ app.post("/api/create-checkout-session", async (req, res) => {
         payment_method_types: ["card"],
         line_items: lineItems,
         mode: "payment",
-        success_url: "http://localhost:5173/sucess",
-        cancel_url: "http://localhost:5173/cancel",
+        success_url: "https://binks-ecommerce.vercel.app/sucess",
+        cancel_url: "https://binks-ecommerce.vercel.app/cancel",
     });
 
-    res.json({id: session.id})
+    res.json({ id: session.id })
 })
 
 

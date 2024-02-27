@@ -9,6 +9,8 @@ import { loadStripe } from "@stripe/stripe-js"
 
 export default function Cart() {
 
+  const SERVER_URL = "https://binks-ecommerce-backend.vercel.app/"
+
   const { cart, clearCart, total_item, total_price, shipping_fee } = useCartContext();
   let totalPrice = shipping_fee + total_price;
   const makePayment = async () => {
@@ -19,7 +21,7 @@ export default function Cart() {
     const headers = {
       "Content-Type": "application/json"
     }
-    const response = await fetch("/api/create-checkout-session", {
+    const response = await fetch(`${SERVER_URL}/api/create-checkout-session`, {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body)
