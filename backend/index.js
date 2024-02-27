@@ -14,7 +14,7 @@ app.listen(7000, () => console.log("http://localhost:7000"));
 
 const isDev = app.settings.env === "development"
 
-const URL = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app/"
+const URL = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app"
 
     app.use(cors({ origin: URL }))
 
