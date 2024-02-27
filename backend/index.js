@@ -10,7 +10,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET);
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://binks-ecommerce-frontend.vercel.app',
+    origin: 'https://binks-ecommerce-backend.vercel.app/',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, 
   }));
