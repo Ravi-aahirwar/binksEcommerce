@@ -8,7 +8,12 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 app.use(express.json());
-app.use(cors());
+
+app.use(cors({
+    origin: 'https://binks-ecommerce-frontend.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, 
+  }));
 
 app.listen(7000, () => console.log("LISTENING AT PORT 7000"));
 
