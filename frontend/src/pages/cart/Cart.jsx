@@ -4,27 +4,22 @@ import { useCartContext } from '../../utils/contexts/Cart_Context';
 import CartItem from '../../components/cartItem/CartItem';
 import { Link } from 'react-router-dom';
 import { loadStripe } from "@stripe/stripe-js"
-import dotenv from 'dotenv' 
-dotenv.config()
 
 
 
 export default function Cart() {
 
-  const REACT_APP_STRIPE_PUBLIC_KEY = process.env.REACT_APP_STRIPE_PUBLIC_KEY;
-
   const { cart, clearCart, total_item, total_price, shipping_fee } = useCartContext();
   let totalPrice = shipping_fee + total_price;
-  // "pk_test_51Ony30SINGekyYxSNFwFd8a20sZ0Qp2WqvxjufiheelACz4ARUiwVPYi0AQgd45ecPIgcaf0mA0YxtSmtbFx7aiV00E1SFJWqg"
   const makePayment = async () => {
-    const stripe = await loadStripe(REACT_APP_STRIPE_PUBLIC_KEY)
+    const stripe = await loadStripe("pk_test_51Ony30SINGekyYxSNFwFd8a20sZ0Qp2WqvxjufiheelACz4ARUiwVPYi0AQgd45ecPIgcaf0mA0YxtSmtbFx7aiV00E1SFJWqg")
     const body = {
       products: cart,
     }
     const headers = {
       "Content-Type": "application/json"
     }
-    const response = await fetch("https://binks-ecommerce-backend.vercel.app/api/create-checkout-session", {
+    const response = await fetch("/api/create-checkout-session", {
       method: "POST",
       headers: headers,
       body: JSON.stringify(body)

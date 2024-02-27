@@ -8,14 +8,11 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 app.use(express.json());
+// app.use(cors({
+//     origin:" http://localhost:5173/"
+// }))
 
-app.use(cors({
-    origin: 'https://binks-ecommerce-backend.vercel.app/',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, 
-  }));
-
-app.listen(7000, () => console.log("LISTENING AT PORT 7000"));
+app.listen(7000, () => console.log("https://binks-ecommerce-backend.vercel.app/"));
 
 app.post("/api/create-checkout-session", async (req, res) => {
     const  {products}  = req.body
