@@ -13,10 +13,13 @@ app.use(express.json());
 app.listen(7000, () => console.log("http://localhost:7000"));
 
 const isDev = app.settings.env === "development"
+const sucess = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app"
+const cancel = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app"
+
 
 const URL = isDev ? "http://localhost:5173" : "https://binks-ecommerce.vercel.app"
 
-    app.use(cors({ origin: URL }))
+app.use(cors({ origin: URL }))
 
 app.post("/api/create-checkout-session", async (req, res) => {
     const { products } = req.body
@@ -37,8 +40,8 @@ app.post("/api/create-checkout-session", async (req, res) => {
         payment_method_types: ["card"],
         line_items: lineItems,
         mode: "payment",
-        success_url: "https://binks-ecommerce.vercel.app/sucess",
-        cancel_url: "https://binks-ecommerce.vercel.app/cancel",
+        success_url: `${sucess}/sucess`,
+        cancel_url: `${cancel}/cancel`,
     });
 
     res.json({ id: session.id })
