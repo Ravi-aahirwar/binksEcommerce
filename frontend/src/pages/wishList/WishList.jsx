@@ -25,9 +25,9 @@ export default function WishList() {
           )
         })
       }
-      {favourite.length <= 0 && (
+      {/* {favourite.length <= 0 && (
         <h2>Add Your Favourite Products</h2>
-      )}
+      )} */}
     </div>
   )
 }

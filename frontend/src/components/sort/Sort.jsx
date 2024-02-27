@@ -7,7 +7,7 @@ export default function Sort() {
   const {sorting} = useFilterContext();
   return (
     <div>
-      <h1> {filter_products.length} Products Available </h1>
+      <h1> {filter_products.} Products Available </h1>
       <h2> Sort By Price.</h2>
       {/* <span style={{color:"red"}}> {query} </span> */}
       <form onChange={sorting}>

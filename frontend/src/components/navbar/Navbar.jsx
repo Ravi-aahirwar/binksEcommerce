@@ -43,7 +43,7 @@ const navigate = useNavigate();
           </Link>
           <Link to="/cart">
             <ShoppingBasket className={css.basket} />
-            <span className={css.cart_item}> {cart.length} </span>
+            {/* <span className={css.cart_item}> {cart.length} </span> */}
           </Link>
           <Link to="/profile">
             <Person className={css.person} />
