@@ -1,6 +1,7 @@
 
 const express = require("express")
 const app = express();
+const cors = require("cors")
 
 require("dotenv").config();
 
@@ -8,7 +9,17 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 app.use(express.json());
 
-app.listen(7000, () => console.log("https://binks-ecommerce-backend.vercel.app/"));
+
+app.listen(7000, () => console.log("7000"));
+
+app.use(cors(
+    {
+        origin:["https://binks-ecommerce-xwoa-fuw85l7tm-ravi-as-projects.vercel.app/","localhost:5173"],
+        methods: ["POST", "GET"],
+        credentials: true
+    }
+
+))
 
 app.post("/api/create-checkout-session", async (req, res) => {
     const  {products}  = req.body
